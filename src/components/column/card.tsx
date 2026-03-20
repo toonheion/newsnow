@@ -203,14 +203,13 @@ function DiffNumber({ diff }: { diff: number }) {
   )
 }
 function ExtraInfo({ item }: { item: NewsItem }) {
-  if (item?.extra?.info) {
-    return <>{item.extra.info}</>
-  }
+  // ... 前面的代码
   if (item?.extra?.icon) {
     const { url, scale } = typeof item.extra.icon === "string" ? { url: item.extra.icon, scale: undefined } : item.extra.icon
     return (
       <img
         src={url}
+        alt={item.title ? `${item.title} icon` : "icon"} // [新增] 补充 alt 属性
         style={{
           transform: `scale(${scale ?? 1})`,
         }}
