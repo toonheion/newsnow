@@ -36,7 +36,8 @@ const pwaOption: Partial<VitePWAOptions> = {
     ],
   },
   workbox: {
-    navigateFallbackDenylist: [/^\/api/],
+   // 增加对 sitemap.xml 的放行
+    navigateFallbackDenylist: [/^\/api/, /^\/sitemap\.xml$/],
   },
   devOptions: {
     enabled: process.env.SW_DEV === "true",
