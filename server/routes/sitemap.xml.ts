@@ -4,7 +4,11 @@ export default defineEventHandler((event) => {
   // 设置响应头为 XML 格式，以便搜索引擎正确解析
   setHeader(event, 'Content-Type', 'text/xml');
 
-  const baseUrl = 'https://newsnow.busiyi.world';
+// [修改点] 动态获取当前访问的域名，不再硬编码
+  const host = getRequestHost(event);
+  const protocol = getRequestProtocol(event);
+  const baseUrl = `${protocol}://${host}`;
+  
   // 获取当前日期的 YYYY-MM-DD 格式
   const lastmod = new Date().toISOString().split('T')[0];
 
